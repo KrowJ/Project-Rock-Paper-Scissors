@@ -5,8 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project: Rock,Paper, Scissors</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="javascript/layout.js" defer></script>
+    <script src="javascript/logic.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
-    <script src="javascript/code.js"></script>
+    <div id="startScreen">
+        <input type="button" value="START" onclick="init()" id="startButton">
+    </div>
+    <div id="mainBoard">
+        <div id="main">
+            <div id="typewriter"></div>
+        </div>
+        <div id="resultsArea">
+
+        </div>
+        <div id="buttonSelection">
+
+        </div>
+    </div>
 </body>
 </html>
