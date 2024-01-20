@@ -1,94 +1,313 @@
 
 body {
-    background-color: rgb(37, 37, 37);
-    background-image: url(/images/191985-retro_games-mountain-8-bit.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom;
-    background-attachment: fixed;
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Roboto', sans-serif;
+  background-color: rgb(37, 37, 37);
+  background-image: url(/images/rpc-background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
 }
 
 #startScreen {
-    background-color: rgba(28, 28, 44, 0.644);
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center
+  background-color: rgba(28, 28, 44, 0.644);
+  backdrop-filter: blur(10px);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #startButton {
-    font-family: 'VT323', monospace;
-    font-size: 50px;
-    padding: 10px 40px;
-    border-radius: 10px;
-    border:  none;
-    animation-name: bounce;
-    animation: bounce 1s cubic-bezier(0, 0, 0, 2) infinite alternate;
-    cursor: pointer;
-    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-    user-select: none;
-    touch-action: manipulation;
-    line-height: normal;
+  font-family: "VT323", monospace;
+  font-size: 50px;
+  padding: 10px 40px;
+  border-radius: 10px;
+  border: none;
+  animation-name: bounce;
+  animation: bounce 1s cubic-bezier(0, 0, 0, 2) infinite alternate;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  user-select: none;
+  touch-action: manipulation;
+  line-height: normal;
 }
-  @keyframes bounce {
-      
-      100% { transform:translateY(-15%); }
-       80% { transform:translateY(0%);     }
-    
-     
+@keyframes bounce {
+  100% {
+    transform: translateY(-15%);
   }
+  80% {
+    transform: translateY(0%);
+  }
+}
 
-  #startButton:hover {
-    color: #fff;
-    background-color: rgb(37, 37, 37);
-    transform: translateY(-2px);
+#startButton:hover {
+  color: #fff;
+  background-color: rgb(37, 37, 37);
+  transform: translateY(-2px);
 }
 
 #startButton:active {
-    background-color: rgb(61, 61, 61);
+  background-color: rgb(61, 61, 61);
 }
 
 .hide {
-    display: none;
+  display: none;
+  transform: scale(0);
 }
 
-.unhide {
-    display: flex;
-}
-
-
-#mainBoard {
-   display: none; 
-}
-
-.mainBoardTwo {
-    display: flex;
-    background-color: rgba(32, 32, 116, 0.74);
-    width: 800px;
-    height: 600px;
-    border-radius: 15px;
-    
-}
-
-#main {
-    background-color: rgb(22, 22, 53);
-    width: 800px;
-    height: 80px;
-    border-radius: 15px 15px 0 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.unHide {
+  display: flex;
 }
 
 .title {
-    color: white;
-    font-weight: bold;
-    font-size: 40px;
+  color: white;
+  font-weight: bold;
+  font-size: 50px;
+  font-family: "VT323";
+}
+
+#mainBoard {
+  display: none;
+}
+
+.mainBoardTwo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(32, 32, 116, 0.74);
+  width: 600px;
+  height: 600px;
+  border-radius: 15px;
+}
+
+#main {
+  background-color: rgb(22, 22, 53);
+  width: 600px;
+  height: 80px;
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#resultArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 600px;
+  height: 320px;
+}
+
+#selectionArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(22, 22, 53);
+  width: 400px;
+  height: 120px;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.weponSelection {
+  font-weight: 900;
+  margin: 0;
+  color: #fff;
+  font-size: 30px;
+}
+
+.wonRound {
+  margin: 10px 0 0 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  font-family: "VT323";
+}
+
+#pointArea {
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#playerArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playerSelection {
+  color: #0554ff;
+  font-size: 90px;
+  font-weight: 700;
+}
+
+.playerPoints,
+.computerPoints,
+.plyResultPoints,
+.cptResultPoints {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#computerArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.computerSelection {
+  color: #e65a5a;
+  font-size: 90px;
+  font-weight: 700;
+}
+
+#buttonSelection {
+  display: flex;
+}
+
+#rockPaperScissors {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 550px;
+  height: 150px;
+}
+
+#rock {
+  background-color: rgba(226, 241, 11, 0.432);
+  border: none;
+  width: 120px;
+  height: 120px;
+  border-radius: 80px;
+}
+
+#rock:hover {
+  background-color: rgba(226, 241, 11, 0.76);
+  transform: translateY(-2px);
+}
+
+#rock:active {
+  background-color: rgba(148, 158, 6, 0.76);
+  transform: translateY(2px);
+}
+
+#paper {
+  background-color: rgba(107, 161, 241, 0.432);
+  border: none;
+  width: 120px;
+  height: 120px;
+  border-radius: 80px;
+}
+
+#paper:hover {
+  background-color: rgba(107, 161, 241, 0.76);
+  transform: translateY(-2px);
+}
+
+#paper:active {
+  background-color: rgba(71, 107, 160, 0.76);
+  transform: translateY(2px);
+}
+
+#scissors {
+  background-color: rgba(233, 64, 64, 0.432);
+  border: none;
+  width: 120px;
+  height: 120px;
+  border-radius: 80px;
+}
+
+#scissors:hover {
+  background-color: rgba(233, 64, 64, 0.76);
+  transform: translateY(-2px);
+}
+
+#scissors:active {
+  background-color: rgba(172, 46, 46, 0.76);
+  transform: translateY(2px);
+}
+
+#endScreen {
+  background-color: rgba(28, 28, 44, 0.644);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: absolute;
+  backdrop-filter: blur(10px);
+  flex-direction: column;
+}
+
+#winnerResult {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(22, 22, 53);
+  width: 400px;
+  height: 270px;
+  justify-content: space-evenly;
+  border-radius: 15px;
+}
+
+.endDecision {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gameDecision {
+  font-weight: 900;
+  margin: 0;
+  color: #fff;
+  font-size: 30px;
+}
+
+.desicionResult {
+  margin: 10px 0 0 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  font-family: "VT323";
+}
+
+#endButton {
+  font-family: "VT323", monospace;
+  font-size: 50px;
+  padding: 10px 40px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  user-select: none;
+  touch-action: manipulation;
+  line-height: normal;
+}
+
+#endButton:hover {
+  color: #fff;
+  background-color: rgb(37, 37, 37);
+  transform: translateY(-2px);
+}
+
+#endButton:active {
+  background-color: rgb(61, 61, 61);
+}
+
+#fotter {
 }

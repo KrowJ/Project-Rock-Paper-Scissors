@@ -1,30 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project: Rock,Paper, Scissors</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="javascript/layout.js" defer></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="javascript/startscreen.js" defer></script>
     <script src="javascript/logic.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=VT323&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div id="startScreen">
-        <input type="button" value="START" onclick="init()" id="startButton">
+      <input type="button" value="START" onclick="init()" id="startButton" />
     </div>
     <div id="mainBoard">
-        <div id="main">
-            <div id="typewriter"></div>
+      <div id="main">
+        <div id="typewriter"></div>
+      </div>
+      <div id="resultArea">
+        <div id="selectionArea">
+          <h1 class="weponSelection"></h1>
+          <p class="wonRound"></p>
         </div>
-        <div id="resultsArea">
-
+        <div id="pointArea">
+          <div id="playerArea">
+            <span class="playerSelection"></span>
+            <p class="playerPoints"></p>
+          </div>
+          <div id="computerArea">
+            <span class="computerSelection"></span>
+            <p class="computerPoints"></p>
+          </div>
         </div>
-        <div id="buttonSelection">
-
+      </div>
+      <div id="buttonSelection">
+        <div id="rockPaperScissors">
+          <button id="rock">
+            <img
+              width="100"
+              height="auto"
+              src="images/rock-font.png"
+              alt="rock-font"
+            />
+          </button>
+          <button id="paper">
+            <img
+              width="100"
+              height="auto"
+              src="images/paper-font.png"
+              alt="paper-font"
+            />
+          </button>
+          <button id="scissors">
+            <img
+              width="100"
+              height="auto"
+              src="images/scissors-font.png"
+              alt="scissors-font"
+            />
+          </button>
         </div>
+      </div>
     </div>
-</body>
+    <div id="endScreen" class="hide">
+      <div id="winnerResult">
+        <div class="endDecision">
+          <h1 class="gameDecision"></h1>
+          <p class="desicionResult"></p>
+        </div>
+        <div class="endDecision">
+          <p class="plyResultPoints"></p>
+          <p class="cptResultPoints"></p>
+        </div>
+      </div>
+      <input type="button" value="Play Again?" id="endButton" />
+    </div>
+    <div id="fotter"></div>
+  </body>
 </html>

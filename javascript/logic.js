@@ -1,93 +1,180 @@
-function game() { 
+//Score
 
-    function getComputerChoice() {
-        const ComputerChoice = ["rock", "paper", "scissors"];
-        const random = Math.floor((Math.random() * ComputerChoice.length));
-        const randomSelection = ComputerChoice[random];
-        return randomSelection;
-    }
-    
-    function playRound(playerSelection, computerSelection) {
-    
-        if (playerSelection == "rock" && computerSelection == "scissors" ||
-            playerSelection == "paper" && computerSelection == "rock" ||
-            playerSelection == "scissors" && computerSelection == "paper") {
-            playerScore++
-            return (`Player: ${playerSelection}\nComputer: ${computerSelection}\nPlayer Win!`)
-        } else if (computerSelection == "rock" && playerSelection == "scissors" ||
-            computerSelection == "paper" && playerSelection == "rock" ||
-            computerSelection == "scissors" && playerSelection == "paper") {
-            computerScore++
-            return (`Player: ${playerSelection}\nComputer: ${computerSelection}\nPlayer Lost!`)
-        } else if (playerSelection  === computerSelection) {
-            drawScore++
-            return (`Player: ${playerSelection}\nComputer: ${computerSelection}\nDRAW!`)
-        } 
-        
-    }
+let playerScore = 0;
+let computerScore = 0;
+let resetScore = 0;
 
-    function restartRound() {
-        restart = prompt("want to play again?\nYes or No?").toLocaleLowerCase()
-        while(true) {
+//Rounds
 
-            if (restart == "yes") {
-                break;
-            } else if (restart == "no") {
-                alert("Hope to see you again!")
-                //console.log(endGame())
-                return "the game has ended";
-            } else if (restart !== 'yes') {
-                alert("Select again")
-                restart = prompt("want to play again?\nYes or No?").toLocaleLowerCase()
-            }
-        }
-            if (restart == "yes") {
-                console.clear()
-                console.log(game())
-            } else if (restart == "no") {
-                alert("Hope to see you again!")
-                console.log(endGame())
-                return;
-            }
-    }
+let endScore = 5;
 
-    function endGame() {
-        
-    }
+// img
 
-    let totalRounds = 10;
-    let playerScore = 0;
-    let computerScore = 0;
-    let drawScore = 0;
+let img;
+let imgTwo;
+img = document.createElement("img");
+img.style.cssText = "width:80px;height:auto;";
+imgTwo = document.createElement("img");
+imgTwo.style.cssText = "width:80px;height:auto;";
 
-    for (let i = 1; i <= totalRounds; i++) {
-        console.log("Rounds: " + i)
-        //let playerSelection = prompt("Let's play!\nrock, paper or scissors").toLocaleLowerCase();  
-        while(true) {
+//Computer random choice selection logic
 
-                if (playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors") {
-                    break;
-                } else if (playerSelection !== "rock" || playerSelection != "paper" || playerSelection !== "scissors") {
-                    alert("Select again")
-                    playerSelection = prompt("Let's play!\nrock, paper or scissors").toLocaleLowerCase();
-                }
-        }
-        const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-        console.log("P: " + playerScore) 
-        console.log("C: " + computerScore)
-        console.log("D: " + drawScore)
-        if (playerScore === 3) {
-            console.log("player king!\nAWESOME!")
-            console.log(restartRound())    
-        } else if (computerScore === 3) {
-            console.log("computer king!\nGAMEOVER!")
-            console.log(restartRound())
-        } else if (drawScore === 3) {
-            console.log("Both are bad!\nDRAW!")
-            console.log(restartRound())
-        }
-    }
+function getComputerChoice() {
+  const ComputerChoice = ["rock", "paper", "scissors"];
+  const random = Math.floor(Math.random() * ComputerChoice.length);
+  const randomSelection = ComputerChoice[random];
+  return randomSelection;
 }
 
-//console.log(game())
+//Wepon Selection & Who Won Round
+
+const wpnSelection = document.querySelector(".weponSelection");
+wpnSelection.textContent = "Select your FIST!";
+
+const wonRound = document.querySelector(".wonRound");
+wonRound.textContent = "Let's see who gets 5 points first";
+
+//Player Buttons
+
+let rockButton = document.querySelector("#rock");
+let paperButton = document.querySelector("#paper");
+let scissorsButton = document.querySelector("#scissors");
+
+rockButton.addEventListener("click", () => handleClick("rock"));
+paperButton.addEventListener("click", () => handleClick("paper"));
+scissorsButton.addEventListener("click", () => handleClick("scissors"));
+
+function handleClick(playerSelection) {
+  const computerSelection = getComputerChoice();
+  playRound(playerSelection, computerSelection);
+  updateChoices(playerSelection, computerSelection);
+}
+
+//Restart Logic
+
+const endBtn = document.querySelector("#endButton");
+const endScreen = document.querySelector("#endScreen");
+const selectionArea = document.querySelector("#selectionArea");
+const gameDecision = document.querySelector(".gameDecision");
+const desicionResult = document.querySelector(".desicionResult");
+const winResult = document.querySelector(".winnerResult");
+const plyResultPoints = document.querySelector(".plyResultPoints");
+const cptResultPoints = document.querySelector(".cptResultPoints");
+
+endBtn.addEventListener("click", () => {
+  restartGame();
+});
+
+function playAgain() {
+  if (playerScore == endScore) {
+    endScreen.removeAttribute("class");
+    winnerResult();
+  } else if (computerScore == endScore) {
+    endScreen.removeAttribute("class");
+    winnerResult();
+  }
+}
+
+function restartGame() {
+  playerScore = resetScore;
+  computerScore = resetScore;
+  endScreen.removeAttribute("class");
+  endScreen.classList = "hide";
+  plyPoints.textContent = "Player: 0";
+  cptPoints.textContent = "Computer: 0";
+  wpnSelection.textContent = "Select your FIST!";
+  wonRound.textContent = "Let's see who gets 5 points first";
+}
+
+function winnerResult() {
+  if (playerScore == endScore) {
+    gameDecision.textContent = "You won the game";
+    desicionResult.textContent = "Congratulations!";
+    plyResultPoints.textContent = "Player: " + playerScore;
+    cptResultPoints.textContent = "Computer: " + computerScore;
+  } else if (computerScore == endScore) {
+    gameDecision.textContent = "Computer won the game";
+    desicionResult.textContent = "Maybe next time";
+    plyResultPoints.textContent = "Player: " + playerScore;
+    cptResultPoints.textContent = "Computer: " + computerScore;
+  }
+}
+
+//Play logic
+
+const plyPoints = document.querySelector(".playerPoints");
+plyPoints.textContent = "Player: 0";
+
+const plySelection = document.querySelector(".playerSelection");
+plySelection.textContent = "?";
+
+const cptPoints = document.querySelector(".computerPoints");
+cptPoints.textContent = "Computer: 0";
+
+const cptSelection = document.querySelector(".computerSelection");
+cptSelection.textContent = "?";
+
+function playRound(playerSelection, computerSelection) {
+  if (
+    (playerSelection == "rock" && computerSelection == "scissors") ||
+    (playerSelection == "paper" && computerSelection == "rock") ||
+    (playerSelection == "scissors" && computerSelection == "paper")
+  ) {
+    plyPoints.textContent = "Player: " + ++playerScore;
+    wpnSelection.textContent = "Player Wins";
+    wonRound.textContent = "Point For You";
+  } else if (
+    (computerSelection == "rock" && playerSelection == "scissors") ||
+    (computerSelection == "paper" && playerSelection == "rock") ||
+    (computerSelection == "scissors" && playerSelection == "paper")
+  ) {
+    cptPoints.textContent = "Computer: " + ++computerScore;
+    wpnSelection.textContent = "Computer Wins";
+    wonRound.textContent = "Point For computer";
+  } else if (playerSelection === computerSelection) {
+    wpnSelection.textContent = "Draw";
+    wonRound.textContent = "Point For None";
+  }
+  playAgain();
+}
+
+// Choices [Player, Computer]
+
+function updateChoices(playerSelection, computerSelection) {
+  switch (playerSelection) {
+    case "rock":
+      plySelection.textContent = "";
+      imgTwo.src = "images/rock-font.png";
+      plySelection.append(imgTwo);
+
+      break;
+    case "paper":
+      plySelection.textContent = "";
+      imgTwo.src = "images/paper-font.png";
+      plySelection.append(imgTwo);
+      break;
+    case "scissors":
+      plySelection.textContent = "";
+      imgTwo.src = "images/scissors-font.png";
+      plySelection.append(imgTwo);
+      break;
+  }
+
+  switch (computerSelection) {
+    case "rock":
+      cptSelection.textContent = "";
+      img.src = "images/rock-font.png";
+      cptSelection.append(img);
+      break;
+    case "paper":
+      cptSelection.textContent = "";
+      img.src = "images/paper-font.png";
+      cptSelection.append(img);
+      break;
+    case "scissors":
+      cptSelection.textContent = "";
+      img.src = "images/scissors-font.png";
+      cptSelection.append(img);
+      break;
+  }
+}
