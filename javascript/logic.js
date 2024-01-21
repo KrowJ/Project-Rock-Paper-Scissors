@@ -84,6 +84,8 @@ function restartGame() {
   cptPoints.textContent = "Computer: 0";
   wpnSelection.textContent = "Select your FIST!";
   wonRound.textContent = "Let's see who gets 5 points first";
+  plySelection.textContent = "?";
+  cptSelection.textContent = "?";
 }
 
 function winnerResult() {
